@@ -17,3 +17,38 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     # No additional fields required for creating users
     REQUIRED_FIELDS = ['usernames']
+
+
+class Language(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+    
+
+class Framework(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+    
+
+class Library(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+    
+
+class OtherTopic(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+    
+
+class Topic(models.Model):
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, name="languages", null=True, blank=True)
+    Framework = models.ForeignKey(Framework, on_delete=models.CASCADE, name="frameworks", null=True, blank=True)
+    library = models.ForeignKey(Library, on_delete=models.CASCADE, name="librarys", null=True, blank=True)
+    other_topic = models.ForeignKey(OtherTopic, on_delete=models.CASCADE, name="other_topics", null=True, blank=True)
