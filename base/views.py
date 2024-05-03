@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import MyUserCreationForm
 from .models import CustomUser
 
@@ -8,6 +9,10 @@ from .models import CustomUser
 
 def landing_page(request):
     return render(request, 'base/landing_page.html')
+
+@login_required(login_url='login')
+def home(request):
+    return render(request, 'base/index.html')
 
 def register_page(request):
     # Initialise user creation form
@@ -50,6 +55,7 @@ def login_page(request):
         # Login the user or throw error
         if user is not None:
             login(request, user)
+            redirect('home')
         else:
             messages.error(request, 'Incorrect password')
             return render(request, 'base/login.html')
