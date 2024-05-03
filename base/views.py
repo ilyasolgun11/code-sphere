@@ -1,9 +1,10 @@
 from django.contrib import messages
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import MyUserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Topic, Room, RelatedTo
 
 # Create your views here.
 
@@ -12,7 +13,18 @@ def landing_page(request):
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'base/index.html')
+    topics = Topic.objects.all()
+    related_to = RelatedTo.objects.all()
+    q = ''
+    if request.GET.get('q') is not None:
+        q = request.GET.get('q')
+    rooms = Room.objects.filter(
+        Q(topic__name__icontains=q) |
+        Q(room_related_to__related_to__icontains=q) |
+        Q(name__icontains=q)
+    )
+    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to}
+    return render(request, 'base/index.html', context)
 
 def register_page(request):
     # Initialise user creation form

@@ -1,5 +1,77 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Home page</h1>
+<main class="home-container">
+    <div class="home-inner-container">
+    <div class="col-md-3">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Languages
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div>
+                    <a href="{% url 'home' %}">All</a>
+                </div>
+                {% for topic in topics %}
+                <div>
+                    <a href="{% url 'home' %}?q={{ topic.name }}">{% if topic.topic_related_to.related_to == 0 %}{{ topic.name }}{% endif %}</a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  Frameworks
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                {% for topic in topics %}
+                <div>
+                    <a href="{% url 'home' %}?q={{ topic.name }}">{% if topic.topic_related_to.related_to == 1 %}{{ topic.name }}{% endif %}</a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Libraries
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                {% for topic in topics %}
+                <div>
+                    <a href="{% url 'home' %}?q={{ topic.name }}">{% if topic.topic_related_to.related_to == 2 %}{{ topic.name }}{% endif %}</a>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Other
+                  </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  {% for topic in topics %}
+                  <div>
+                      <a href="{% url 'home' %}?q={{ topic.name }}">{% if topic.topic_related_to.related_to == 3 %}{{ topic.name }}{% endif %}</a>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+          </div>
+    </div>
+    <div class="col-md-6">
+        <form action="" method="POST">
+            <input type="text" name="q" placeholder="Search rooms...">
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+</main>
 {% endblock content %}

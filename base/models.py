@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
     # Specifies the field to be used as the unique identifier for authentication
     USERNAME_FIELD = 'email'
     # No additional fields required for creating users
-    REQUIRED_FIELDS = ['usernames']
+    REQUIRED_FIELDS = ['username']
 
 
 class RelatedTo(models.Model):
@@ -29,6 +29,7 @@ class RelatedTo(models.Model):
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)
+    topic_related_to = models.ForeignKey(RelatedTo, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
