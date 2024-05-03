@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main class="login-container">
+  <div class="login-inner-container row">
+    <div class="col-md-6">
+      <img
+        class="login-page-img"
+        src="{% static 'images/landing_page_left.png' %}"
+        alt=""
+      />
+    </div>
+    <div class="col-md-6 login-form-container">
+        <!-- Any errors will show up here  -->
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+          {{ message }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form class="form" action="" method="POST">
+        {% csrf_token %}
+        <div>
+          <label for="username"
+            >Email
+            <input
+              id="username"
+              name="email"
+              type="email"
+              placeholder="e.g. user@gmail.com "
+            />
+          </label>
+        </div>
+        <div>
+          <label for="password"
+            >Password
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+            />
+          </label>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <div class="login-to-register-container">
+        <p>Are you new?</p>
+        <a href="{% url 'register_page' %}">Create an account</a>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
