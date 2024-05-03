@@ -1,0 +1,138 @@
+/* Google fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Navbar styles -------------------------------------------- */
+.navbar {
+    background-color: white;
+}
+
+.container-fluid {
+    max-width: 1280px;
+    margin: 0px auto;
+    font-weight: 500;
+}
+
+/* Landing page styles ------------------------------------------------ */
+body {
+    box-sizing: border-box;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.landing-page-header {
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.landing-page-header h1 {
+    margin-top: 150px;
+    font-size: 5rem;
+    font-family: "Lilita One", sans-serif;
+    letter-spacing: 2.6px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+
+.landing-page-header p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0px auto;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.landing-page-hero-img {
+    top: 40px;
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+}
+
+.landing-page-hero-auth-container a, .landing-page-dive-in {
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-right: 5px;
+    color: #3351DB;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px;
+}
+
+.landing-page-dive-in {
+    padding: 8px 20px 8px 20px;
+    transition: all 0.2s ease;
+}
+
+.landing-page-hero-auth-container a:nth-of-type(1) {
+    padding: 8px 33px 8px 35px;
+    transition: all 0.2s ease;
+}
+
+.landing-page-hero-auth-container a:nth-of-type(2) {
+    padding: 8px 53px 8px 53px;
+    transition: all 0.2s ease;
+}
+
+.landing-page-dive-in:hover {
+    padding: 8px 50px 8px 20px;
+    transition: all 0.2s ease;
+}
+
+.landing-page-hero-auth-container a:nth-of-type(1):hover {
+    padding: 8px 49px 8px 35px;
+}
+
+.landing-page-hero-auth-container a:nth-of-type(2):hover {
+    padding: 8px 60px 8px 53px;
+}
+
+.landing-page-hero-auth-container i, .landing-page-dive-in i {
+    transform: rotate(45deg);
+    color: white;
+    padding: 8.2px 11px;
+    background-color: #3351DB;
+    border-radius: 20px;
+    right: 4.2px;
+    top: 3.86px;
+    position: absolute;
+    margin-left: 8px;
+    margin-right: 0px;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.landing-page-dive-in:hover i {
+    opacity: 1;
+} 
+
+.landing-page-hero-auth-container a:nth-of-type(1):hover i {
+    opacity: 1;
+}
+
+.landing-page-hero-auth-container a:nth-of-type(2):hover i {
+    opacity: 1;
+}
+
+.landing-page-img-left {
+    left: 10px;
+    bottom: 180px;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+}
+
+.landing-page-img-right {
+    right: 10px;
+    bottom: 215px;
+    position: absolute;
+    width: 340px;
+    height: 340px;
+}
