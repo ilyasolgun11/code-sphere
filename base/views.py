@@ -9,7 +9,7 @@ from .models import CustomUser
 def landing_page(request):
     return render(request, 'base/landing_page.html')
 
-def register(request):
+def register_page(request):
     # Initialise user creation form
     form = MyUserCreationForm()
 
@@ -27,33 +27,37 @@ def register(request):
             # Throw error when there is an error
             messages.error(request, 'An error has occurred during registration')
 
-    context = {'form': form}        
+    context = { 'form': form }        
     return render(request, 'base/register.html', context)
 
 def login_page(request):
     # If the request from the view is post
     if request.method == 'POST':
-        # Use the data passed from the view to get the email and password
+        # Grab the email and password from the request
         email = request.POST.get('email').lower()
         password = request.POST.get('password')
-        # See if the email being used is in the database or not
+
+        # Check if the email passed is in the database
         try:
             user = CustomUser.objects.get(email=email)
-        except:
-            # If it is not then throw an error
+        except CustomUser.DoesNotExist:
             messages.error(request, 'User does not exist')
-        # Authenticate the user 
+            return render(request, 'base/login.html')
+
+        # Authenticate the user
         user = authenticate(request, email=email, password=password)
-        # Login the user
+
+        # Login the user or throw error
         if user is not None:
             login(request, user)
         else:
-            messages.error(request, 'Username OR password does not exit')
+            messages.error(request, 'Incorrect password')
+            return render(request, 'base/login.html')
 
     return render(request, 'base/login.html')
 
 
-def logout_user(request):
+def logout_page(request):
     # Logout the user
     logout(request)
     return redirect('landing_page')

@@ -10,11 +10,11 @@
     <p>...where you explore programming topics, join discussion rooms hosted by programmers, and connect with peers for learning and networking.</p>
     <div>
         {% if user.is_authenticated %}
-            <a class="landing-page-dive-in" href="{% url 'home_page' %}">Dive into the sphere! <i class="fa-solid fa-arrow-up"></i></a>
+            <a class="landing-page-dive-in" href="#">Dive into the sphere! <i class="fa-solid fa-arrow-up"></i></a>
         {% else %}
         <div class="landing-page-hero-auth-container">
-            <a href="{% url 'register_page' %}">Register <i class="fa-solid fa-arrow-up"></i></a>
-            <a href="{% url 'login_page' %}">Login <i class="fa-solid fa-arrow-up"></i></a>
+            <a href="{% url 'register' %}">Register <i class="fa-solid fa-arrow-up"></i></a>
+            <a href="{% url 'login' %}">Login <i class="fa-solid fa-arrow-up"></i></a>
         </div>
         {% endif %}
     </div>
