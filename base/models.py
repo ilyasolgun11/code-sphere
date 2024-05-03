@@ -52,3 +52,19 @@ class Topic(models.Model):
     Framework = models.ForeignKey(Framework, on_delete=models.CASCADE, name="frameworks", null=True, blank=True)
     library = models.ForeignKey(Library, on_delete=models.CASCADE, name="librarys", null=True, blank=True)
     other_topic = models.ForeignKey(OtherTopic, on_delete=models.CASCADE, name="other_topics", null=True, blank=True)
+
+
+class Room(models.Model):
+    host = models.ForeignKey(
+        CustomUser, on_delete=models.CASCADE, related_name="room_host"
+    )
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="topic")
+    participants = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="room_participants", blank=True, null=True)
+    banned_participants = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="banned_room_participants", blank=True, null=True)
+    name = models.CharField(max_length=200)
+    is_private = models.BooleanField(default=False)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, Language, Framework, Library, OtherTopic, Topic
+from .models import CustomUser, Language, Framework, Library, OtherTopic, Topic, Room
 
 # Register your models here.
 
@@ -9,3 +9,4 @@ admin.site.register(Framework)
 admin.site.register(Library)
 admin.site.register(OtherTopic)
 admin.site.register(Topic)
+admin.site.register(Room)
