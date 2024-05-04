@@ -24,6 +24,11 @@ def home(request):
     context = {'topics': topics, 'rooms': rooms, 'related_to': related_to}
     return render(request, 'base/index.html', context)
 
+def room(request, pk):
+    room = Room.objects.get(id=pk)
+    context = {'room': room}
+    return render(request, 'base/room.html', context)
+
 def register_page(request):
     # Initialise user creation form
     form = MyUserCreationForm()

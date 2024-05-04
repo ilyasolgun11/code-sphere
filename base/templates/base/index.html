@@ -116,7 +116,7 @@
                 <div>
                   <a href="{% url 'home' %}?q={{ room.topic.name }}">{{ room.topic.name }}</a><span> > </span><a href="{% url 'home' %}?q={{ room.room_related_to.id|subtract_one }}">{{ room.room_related_to }}</a>
                 </div>
-                <a class="home-room-dive-in" href="#">Dive in <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="home-room-dive-in" href="{% url 'room' room.id %}">Dive in <i class="fa-solid fa-arrow-right"></i></a>
               </div>
             </div>
           </div>
