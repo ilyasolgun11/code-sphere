@@ -456,9 +456,95 @@ body {
 
 /* Room page style -------------------------------------------------------  */
 .room-container {
-    padding-top: 120px;
-    min-height: 100vh;
+    padding-top: 90px;
+    height: 100vh;
     background-color: rgb(241, 241, 241);
+}
+
+.room-container .col-md-8 {
+    position: relative;
+    padding: 0px;
+}
+
+.room-info-container {
+    background-color: #190482;
+    color: white;
+    border-radius: 6px 6px 0px 0px;
+    padding: 12px 14px 8px 14px;
+}
+
+.room-info-container div:nth-of-type(1) {
+    margin-bottom: 8px;
+}
+
+.room-info-container div:nth-of-type(1), .room-info-container div:nth-of-type(2) {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-info-container div:nth-of-type(1) a {
+    position: relative;
+    color: #190482;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: white;
+    padding: 6px 11px;
+    border-radius: 50px;
+    transition: padding 0.2s ease;
+}
+
+.room-info-container div:nth-of-type(1) a i {
+    opacity: 0;
+    position: absolute;
+    top: 2.1px;
+    left: 2.1px;
+    background-color: #190482;
+    color: white;
+    transform: rotate(225deg);
+    padding: 8px 9px;
+    border-radius: 50%;
+    transition: opacity 0.2s ease;
+}
+
+.room-info-container div:nth-of-type(1) a:hover {
+    padding: 6px 11px 6px 40px;
+}
+
+.room-info-container div:nth-of-type(1) a:hover i {
+    opacity: 1;
+}
+
+.room-info-container div:nth-of-type(1) small {
+    color: rgb(216, 216, 216);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.room-info-container div:nth-of-type(2) h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.room-info-container div:nth-of-type(2) h4 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #e2e2e2;
+}
+
+.message-form-container {
+    width: 100%;
+    position: absolute;
+    bottom: -30px;
+    left: 0px;
+}
+
+.room-messages-container form {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .room-inner-container {
@@ -467,9 +553,13 @@ body {
 }
 
 .room-messages-container {
+    padding-bottom: 50px;
+    position: relative;
     background-color: white;
-    border-radius: 6px;
+    border-radius: 0px 0px 6px 6px;
     border: 1px solid #00000018;
+    height: 75vh;
+    overflow-y: scroll;
 }
 
 .message-container {
@@ -523,18 +613,21 @@ body {
     font-size: 0.75rem;
 }
 
-.message-container-first p {
+.message {
     margin-top: 8px;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 0px 8px 8px 8px;
     background-color: #3351DB;
     color: white;
 }
 
-.room-messages-container form {
-    position: relative;
-    display: flex;
-    align-items: center;
+.message-w-img {
+    width: auto;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 0px 8px 8px 8px;
+    background-color: #3351DB;
+    color: white;
 }
 
 .message-body {
@@ -557,10 +650,10 @@ body {
     font-size: 1.12rem;
     position: absolute;
     cursor: pointer;
-    padding: 16px 15px;
+    padding: 14px 15px;
     color: #fff;
-    right: 55px;
-    top: 4px;
+    right: 52px;
+    top: 5.2px;
     background-color: #3351DB;
     border-radius: 6px;
 }
@@ -568,8 +661,9 @@ body {
 .send-message-btn {
     font-size: 1.1rem;
     right: 4px;
+    top: 5.2px;
     position: absolute;
-    padding: 12px 15px;
+    padding: 10px 14px;
     border-radius: 6px;
     border: none;
     background-color: #3351DB;

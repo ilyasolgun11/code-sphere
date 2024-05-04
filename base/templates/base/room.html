@@ -4,11 +4,20 @@
 <main class="room-container">
     <div class="room-inner-container">
     <div class="row">
-    <h3>{{ room.name }}</h3>
     <div class="col-md-8">
+        <div class="room-info-container">
+            <div>
+                <a href="{% url 'home' %}"><i class="fa-solid fa-arrow-right"></i> Go back</a>
+                <small>{{ room.created|timesince }} ago</small>
+            </div>
+            <div>
+                <h3>{{ room.name }}</h3>
+                <h4>{{ room.topic.name }}</h4>
+            </div>
+        </div>
         <div class="room-messages-container">
         {% for message in room_messages %}
-            {% if message.body %}
+            {% if message.body and not message.image %}
             <div class="message-container">
                 <div class="message-container-first">
                     <div class="message-container-second">
@@ -18,7 +27,7 @@
                             <h4 class="message-room-host">Host</h4>
                         {% endif %}
                     </div>
-                    <p>{{ message.body }}</p>
+                    <p class="message">{{ message.body }}</p>
                 </div>
                 <small>{{ message.created|timesince }} ago</small>
             </div>
@@ -33,6 +42,7 @@
                             <h4 class="message-room-host">Host</h4>
                         {% endif %}
                     </div>
+                    <p class="message-w-img">{{ message.body }}</p>
                     <img class="message-img" src="{{ message.image.url }}" alt="Message Image">
                 </div>
                 <small>{{ message.created|timesince }} ago</small>
@@ -40,6 +50,8 @@
                 
             {% endif %}
         {% endfor %}
+    </div>
+    <div class="message-form-container">
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.body }}
