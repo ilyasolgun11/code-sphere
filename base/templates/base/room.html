@@ -2,22 +2,57 @@
 
 {% block content %}
 <main class="room-container">
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="room-inner-container">
+    <div class="row">
     <h3>{{ room.name }}</h3>
     <div class="col-md-8">
+        <div class="room-messages-container">
         {% for message in room_messages %}
-        <p>{{ message.body }}</p>
-        <p>{{ message.user.username }}</p>
+            {% if message.body %}
+            <div class="message-container">
+                <div class="message-container-first">
+                    <div class="message-container-second">
+                        <img class="room-message-image" src="{{ message.user.profile_image.url }}" alt="{{ message.user.username }}'s profile image">
+                        <h4>{{ message.user.username }}</h4>
+                        {% if message.user == room.host %}
+                            <h4 class="message-room-host">Host</h4>
+                        {% endif %}
+                    </div>
+                    <p>{{ message.body }}</p>
+                </div>
+                <small>{{ message.created|timesince }} ago</small>
+            </div>
+            {% endif %}
+            {% if message.image %}
+            <div class="message-container">
+                <div class="message-container-first">
+                    <div class="message-container-second">
+                        <img class="room-message-image" src="{{ message.user.profile_image.url }}" alt="{{ message.user.username }}'s profile image">
+                        <h4>{{ message.user.username }}</h4>
+                        {% if message.user == room.host %}
+                            <h4 class="message-room-host">Host</h4>
+                        {% endif %}
+                    </div>
+                    <img class="message-img" src="{{ message.image.url }}" alt="Message Image">
+                </div>
+                <small>{{ message.created|timesince }} ago</small>
+            </div>
+                
+            {% endif %}
         {% endfor %}
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <input name="body" placeholder="Write your message here..." />
-          </form>
+            {{ form.body }}
+            <label for="custom-file-upload" class="custom-file-upload">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </label>
+            <input id="custom-file-upload" type="file" style="display: none;" name="image">
+            <button class="send-message-btn" type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
     </div>
+</div>
     <div class="col-md-4"></div>
+</div>
+</div>
 </main>
-{{ room.name }}
 {% endblock content %}

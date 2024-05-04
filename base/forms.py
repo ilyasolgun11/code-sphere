@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Message
 
 # Custom form for user creation
 class MyUserCreationForm(UserCreationForm):
@@ -12,4 +12,14 @@ class MyUserCreationForm(UserCreationForm):
             'email': forms.EmailInput(attrs={'placeholder': 'Enter your email'}),
             'password1': forms.PasswordInput(attrs={'placeholder': '&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'}),
             'password2': forms.PasswordInput(attrs={'placeholder': '&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'}),
+        }
+
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['body', 'image']
+        widgets = {
+            'body': forms.Textarea(attrs={'placeholder': 'Write your message here...', 'class': 'message-body'}),
+            'image': forms.FileInput(attrs={'placeholder': 'Choose an image...', 'class': 'message-file'}),
         }

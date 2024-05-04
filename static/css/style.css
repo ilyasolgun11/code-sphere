@@ -453,3 +453,125 @@ body {
 .home-room-inner-third .home-room-dive-in:hover i  {
     opacity: 1;
 }
+
+/* Room page style -------------------------------------------------------  */
+.room-container {
+    padding-top: 120px;
+    min-height: 100vh;
+    background-color: rgb(241, 241, 241);
+}
+
+.room-inner-container {
+    width: 1280px;
+    margin: 0px auto;
+}
+
+.room-messages-container {
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #00000018;
+}
+
+.message-container {
+    margin: 15px;
+    border-left: 2px solid rgba(17, 0, 255, 0.337);
+    padding: 15px 0px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-container-second {
+    display: flex;
+    align-items: center;
+}
+
+.message-container-second h4 {
+    font-size: 1.1rem;
+    margin-left: 7px;
+    margin-top: 7px;
+    font-weight: 600;
+}
+
+.message-container .message-room-host {
+    background-color: #3351DB;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+.message-container .room-message-image {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.message-container p {
+    margin: 0px;
+    margin-top: 2px; 
+}
+
+.message-container small {
+    text-align: end;
+    min-width: 160px;
+    margin-bottom: auto;
+    margin-top: 9.5px;
+    color: rgb(124, 124, 124);
+    font-size: 0.75rem;
+}
+
+.message-container-first p {
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #3351DB;
+    color: white;
+}
+
+.room-messages-container form {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.message-body {
+    padding: 12px 95px 17px 12px;
+    width: 100%;
+    resize: none;
+    height: 57px;
+    outline: none;
+    border-radius: 0px 0px 6px 6px;
+    border: 1px solid #00000018;
+}
+
+.message-img {
+    margin-top: 8px;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.fa-arrow-up-from-bracket {
+    font-size: 1.12rem;
+    position: absolute;
+    cursor: pointer;
+    padding: 16px 15px;
+    color: #fff;
+    right: 55px;
+    top: 4px;
+    background-color: #3351DB;
+    border-radius: 6px;
+}
+
+.send-message-btn {
+    font-size: 1.1rem;
+    right: 4px;
+    position: absolute;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: none;
+    background-color: #3351DB;
+    color: white;
+}
