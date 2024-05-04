@@ -23,7 +23,11 @@ def home(request):
         Q(room_related_to__related_to__icontains=q) |
         Q(name__icontains=q)
     )
-    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to}
+    participants = []
+    for room in rooms:
+        participants.extend(room.participants.all())
+    participant_count = len(participants)
+    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to, 'participants': participants, 'participant_count': participant_count}
     return render(request, 'base/index.html', context)
 
 def register_page(request):
@@ -41,8 +45,10 @@ def register_page(request):
             # Redirect user to login page when user is registered
             return redirect('login')
         else:
-            # Throw error when there is an error
-            messages.error(request, 'An error has occurred during registration')
+            # Get the form errors and display them as messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"Error in {field}: {error}")
 
     context = { 'form': form }        
     return render(request, 'base/register.html', context)

@@ -2,136 +2,111 @@
 <main class="home-container">
   <div class="home-inner-container">
     <div class="row">
-      <div class="col-md-3">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="col-md-3 topics-container">
+        <div class="accordion" id="accordionPanelsStayOpenExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseOne"
-                aria-expanded="false"
-                aria-controls="flush-collapseOne"
-              >
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                 Languages
               </button>
             </h2>
-            <div
-              id="flush-collapseOne"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-              <div>
-                <a href="{% url 'home' %}?q=0">All</a>
-              </div>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <a class="topic-item" href="{% url 'home' %}?q=0">All Languages <i class="fa-solid fa-arrow-right"></i></a>
               {% for topic in topics %}
-              <div>
-                <a href="{% url 'home' %}?q={{ topic.name }}">
-                    {% if topic.topic_related_to.related_to == 0 %}{{ topic.name}}{% endif %}</a>
-              </div>
+                {% if topic.topic_related_to.related_to == 0 %}
+                <a class="topic-item" href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% endif %}
               {% endfor %}
+              </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseTwo"
-                aria-expanded="false"
-                aria-controls="flush-collapseTwo"
-              >
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                 Frameworks
               </button>
             </h2>
-            <div
-              id="flush-collapseTwo"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-            <div>
-                <a href="{% url 'home' %}?q=1">All</a>
-              </div>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <a class="topic-item" href="{% url 'home' %}?q=1">All Frameworks <i class="fa-solid fa-arrow-right"></i></a>
               {% for topic in topics %}
-              <div>
-                <a href="{% url 'home' %}?q={{ topic.name }}">
-                    {% if topic.topic_related_to.related_to == 1 %}{{ topic.name}}{% endif %}</a>
-              </div>
+                {% if topic.topic_related_to.related_to == 1 %}
+                <a class="topic-item" href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% endif %}
               {% endfor %}
+              </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseThree"
-                aria-expanded="false"
-                aria-controls="flush-collapseThree"
-              >
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
                 Libraries
               </button>
             </h2>
-            <div
-              id="flush-collapseThree"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-            <div>
-                <a href="{% url 'home' %}?q=2">All</a>
-              </div>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <a class="topic-item" href="{% url 'home' %}?q=2">All Libraries <i class="fa-solid fa-arrow-right"></i></a>
               {% for topic in topics %}
-              <div>
-                <a href="{% url 'home' %}?q={{ topic.name }}">
-                    {% if topic.topic_related_to.related_to == 2 %}{{ topic.name}}{% endif %}</a>
-              </div>
+                {% if topic.topic_related_to.related_to == 2 %}
+                <a class="topic-item" href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% endif %}
               {% endfor %}
+              </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#flush-collapseFour"
-                aria-expanded="false"
-                aria-controls="flush-collapseFour"
-              >
-                Other
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                Libraries
               </button>
             </h2>
-            <div
-              id="flush-collapseFour"
-              class="accordion-collapse collapse"
-              data-bs-parent="#accordionFlushExample"
-            >
-            <div>
-                <a href="{% url 'home' %}?q=3">All</a>
-              </div>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <a class="topic-item" href="{% url 'home' %}?q=3">All Other <i class="fa-solid fa-arrow-right"></i></a>
               {% for topic in topics %}
-              <div>
-                <a href="{% url 'home' %}?q={{ topic.name }}">
-                    {% if topic.topic_related_to.related_to == 3 %}{{ topic.name}}{% endif %}</a
-                >
-              </div>
+                {% if topic.topic_related_to.related_to == 3 %}
+                <a class="topic-item" href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% endif %}
               {% endfor %}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <form action="" method="POST">
-          <input type="text" name="q" placeholder="Search rooms..." />
+      <div class="col-md-6 home-rooms-container">
+        <form action="{% url 'home' %}" method="GET">
+          {% csrf_token %}
+          <input class="search-input" type="text" name="q" placeholder="Search rooms..." />
         </form>
         <div class="home-room-container">
           {% for room in rooms %}
-          <div>
-            <h4>{{ room.host.username }}</h4>
-            <h3>{{ room.name }}</h3>
+          <div class="home-room">
+            <div class="home-room-inner-first">
+              <div>
+                <img class="home-room-profile-img" src="{{ room.host.profile_image.url }}" alt="{{ room.host.username }}'s profile image">
+                <h4>Host <span>@{{ room.host.username }}</span></h4>
+              </div>
+              <small>{{ room.created|timesince }} ago</small>
+            </div>
+            <div class="home-room-inner-second">
+              <div>
+                <h3>{{ room.name }}</h3>
+                <small>{{ participant_count }} PARTICIPANT{% if participant_count > 1 %}S{% endif %}</small>
+              </div>
+              <div class="home-room-participant-container">
+                {% for participant in participants %}
+                  <img class="home-room-participant-img" src="{{ participant.profile_image.url }}" alt="{{ participant.username }}'s profile image">
+                {% endfor %}
+              </div>
+            </div>
+            <div class="home-room-inner-third">
+              <div>
+                <h3>{{ room.topic }}</h3>
+                <h3>{{ room.room_related_to }}s</h3>
+                
+              </div>
+            </div>
           </div>
           {% endfor %}
         </div>

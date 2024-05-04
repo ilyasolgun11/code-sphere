@@ -1,13 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+import random
 
 # Create your models here.
 
 class CustomUser(AbstractUser):
+    # Generate random user profile image
+    def random_image():
+        image_urls = [
+            'profile_default.jpg',
+            'profile_default_2.jpg',
+            'profile_default_3.jpg',
+            'profile_default_4.jpg',
+            'profile_default_5.jpg',
+            'profile_default_6.jpg',
+            'profile_default_7.jpg',
+        ]
+        return random.choice(image_urls)
     name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
     bio = models.TextField(blank=True)
-    profile_image = models.ImageField(blank=True, null=True, default="profile_default.jpg")
+    profile_image = models.ImageField(blank=True, null=True, default=random_image)
     facebook_url = models.URLField(blank=True)
     twitter_url = models.URLField(blank=True)
     instagram_url = models.URLField(blank=True)
@@ -15,8 +28,7 @@ class CustomUser(AbstractUser):
 
     # Specifies the field to be used as the unique identifier for authentication
     USERNAME_FIELD = 'email'
-    # No additional fields required for creating users
-    REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = []
 
 
 class RelatedTo(models.Model):
@@ -41,8 +53,8 @@ class Room(models.Model):
     )
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="topic")
     room_related_to = models.ForeignKey(RelatedTo, on_delete=models.CASCADE, related_name="room_related_to")
-    participants = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="room_participants", blank=True, null=True)
-    banned_participants = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="banned_room_participants", blank=True, null=True)
+    participants = models.ManyToManyField(CustomUser, related_name="room_participants", blank=True)
+    banned_participants = models.ManyToManyField(CustomUser, related_name="banned_room_participants", blank=True)
     name = models.CharField(max_length=200)
     is_private = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
