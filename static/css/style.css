@@ -575,6 +575,7 @@ body {
 .message-container-second {
     display: flex;
     align-items: center;
+    margin-bottom: 6px;
 }
 
 .message-container-second h4 {
@@ -614,7 +615,6 @@ body {
 }
 
 .message {
-    margin-top: 8px;
     padding: 10px;
     border-radius: 0px 8px 8px 8px;
     background-color: #3351DB;
@@ -623,7 +623,6 @@ body {
 
 .message-w-img {
     width: auto;
-    margin-top: 8px;
     padding: 10px;
     border-radius: 0px 8px 8px 8px;
     background-color: #3351DB;
@@ -667,5 +666,42 @@ body {
     border-radius: 6px;
     border: none;
     background-color: #3351DB;
+    color: white;
+}
+
+.room-participants-container {
+    height: 86.49vh;
+    width: 100%;
+    border: 1px solid #00000018;
+    border-radius: 6px;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.room-participant-img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #3351DB;
+}
+
+.room-participant {
+    background-color: #190482;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.room-participant div {
+    display: flex;
+    align-items: center;
+}
+
+.room-participant h4 {
+    margin-top: 4px;
+    margin-left: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
     color: white;
 }

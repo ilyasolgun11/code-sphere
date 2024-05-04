@@ -27,15 +27,17 @@ def home(request):
 def room(request, pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all()
+    participants = room.participants.all()
     form = MessageForm(request.POST, request.FILES)
-    if form.is_valid():
-        # Create a new message object
-        message = form.save(commit=False)
-        message.user = request.user
-        message.room = room
-        message.save()
-        return redirect('room', pk=room.id)
-    context = {'room': room, 'room_messages': room_messages, 'form': form}
+    if request.method == 'POST':
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.user = request.user
+            message.room = room
+            message.save()
+            room.participants.add(request.user)
+            return redirect('room', pk=room.id)
+    context = {'room': room, 'room_messages': room_messages, 'form': form, 'participants': participants}
     return render(request, 'base/room.html', context)
 
 def register_page(request):

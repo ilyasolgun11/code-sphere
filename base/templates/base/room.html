@@ -63,7 +63,19 @@
         </form>
     </div>
 </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="room-participants-container">
+            {% for participant in participants %}
+            <div class="room-participant">
+                <div>
+                    <img class="room-participant-img" src="{{ participant.profile_image.url }}" alt="{{participant.username}}'s profile image">
+                    <h4>@{{ participant.username }}</h4>
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 </div>
 </main>
