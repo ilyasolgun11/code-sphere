@@ -2,7 +2,21 @@
 
 {% block content %}
 <main class="room-container">
-    <div class="col-md-8"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>{{ room.name }}</h3>
+    <div class="col-md-8">
+        {% for message in room_messages %}
+        <p>{{ message.body }}</p>
+        <p>{{ message.user.username }}</p>
+        {% endfor %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input name="body" placeholder="Write your message here..." />
+          </form>
+    </div>
     <div class="col-md-4"></div>
 </main>
 {{ room.name }}
