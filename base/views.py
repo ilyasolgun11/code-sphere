@@ -15,19 +15,13 @@ def landing_page(request):
 def home(request):
     topics = Topic.objects.all()
     related_to = RelatedTo.objects.all()
-    q = ''
-    if request.GET.get('q') is not None:
-        q = request.GET.get('q')
+    q = request.GET.get('q', '')
     rooms = Room.objects.filter(
         Q(topic__name__icontains=q) |
         Q(room_related_to__related_to__icontains=q) |
         Q(name__icontains=q)
     )
-    participants = []
-    for room in rooms:
-        participants.extend(room.participants.all())
-    participant_count = len(participants)
-    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to, 'participants': participants, 'participant_count': participant_count}
+    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to}
     return render(request, 'base/index.html', context)
 
 def register_page(request):
