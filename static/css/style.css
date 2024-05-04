@@ -442,6 +442,7 @@ body {
     color: #fff;
     border-radius: 50%;
     transform: rotate(-45deg);
+    transition: opacity 0.2s ease;
 }
 
 .home-room-inner-third .home-room-dive-in:hover  {
