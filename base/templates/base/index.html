@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+
+{% load custom_filters %}
+
+{% block content %}
 <main class="home-container">
   <div class="home-inner-container">
     <div class="row">
@@ -102,9 +106,7 @@
             </div>
             <div class="home-room-inner-third">
               <div>
-                <h3>{{ room.topic }}</h3>
-                <h3>{{ room.room_related_to }}s</h3>
-                
+                <a href="{% url 'home' %}?q={{ room.topic.name }}">{{ room.topic.name }}</a><span> > </span><a href="{% url 'home' %}?q={{ room.room_related_to.id|subtract_one }}">{{ room.room_related_to }}</a>
               </div>
             </div>
           </div>
