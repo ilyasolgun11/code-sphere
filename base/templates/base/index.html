@@ -127,6 +127,7 @@
         <div class="user-information-container">
           <img class="user-profile-img" src="{{ request.user.profile_image.url }}" alt="{{ request.user.username }}'s profile image">
           <h3>@{{ request.user.username }}</h3>
+          <a class="user-information-room-create" href="{% url 'create-room' %}"><i class="fa-solid fa-plus"></i> Create room</a>
         </div>
         <div class="recent-activity-container">
           {% for recent_message in recent_messages %}

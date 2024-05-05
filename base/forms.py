@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Message
+from .models import CustomUser, Message, Room
 
 # Custom form for user creation
 class MyUserCreationForm(UserCreationForm):
@@ -13,6 +13,13 @@ class MyUserCreationForm(UserCreationForm):
             'password1': forms.PasswordInput(attrs={'placeholder': '&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'}),
             'password2': forms.PasswordInput(attrs={'placeholder': '&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;'}),
         }
+
+
+class RoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        fields = '__all__'
+        exclude = ['host', 'participants', 'banned_participants']
 
 
 class MessageForm(forms.ModelForm):

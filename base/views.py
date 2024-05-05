@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import MyUserCreationForm, MessageForm
+from .forms import MyUserCreationForm, MessageForm, RoomForm
 from .models import CustomUser, Topic, Room, RelatedTo, Message
 
 # Create your views here.
@@ -40,6 +40,19 @@ def room(request, pk):
             return redirect('room', pk=room.id)
     context = {'room': room, 'room_messages': room_messages, 'form': form, 'participants': participants}
     return render(request, 'base/room.html', context)
+
+def create_room(request):
+    if request.method == 'POST':
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
+            form.save_m2m()
+            return redirect('room', pk=room.id)
+    else:
+        form = RoomForm()
+    return render(request, 'base/create_room.html', {'form': form})
 
 def register_page(request):
     # Initialise user creation form
