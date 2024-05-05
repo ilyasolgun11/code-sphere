@@ -21,7 +21,7 @@ def home(request):
         Q(topic__name__icontains=q) |
         Q(room_related_to__related_to__icontains=q) |
         Q(name__icontains=q)
-    )
+    ).order_by('-created')
     context = {'topics': topics, 'rooms': rooms, 'related_to': related_to, 'recent_messages': recent_messages}
     return render(request, 'base/index.html', context)
 
@@ -38,6 +38,9 @@ def room(request, pk):
             message.save()
             room.participants.add(request.user)
             return redirect('room', pk=room.id)
+        
+    if request.user in room.banned_participants.all():
+        return redirect('home')
     context = {'room': room, 'room_messages': room_messages, 'form': form, 'participants': participants}
     return render(request, 'base/room.html', context)
 

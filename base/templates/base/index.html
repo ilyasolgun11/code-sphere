@@ -92,6 +92,39 @@
         </form>
         <div class="home-room-container">
           {% for room in rooms %}
+          {% if request.user in room.banned_participants.all %}
+          <div class="home-room">
+            <div class="home-room-banned-banner">
+              <p>{{ room.host.username }} has banned you from this room.</p>
+            </div>
+            <div class="home-room-inner-first">
+              <div>
+                <img class="home-room-profile-img" src="{{ room.host.profile_image.url }}" alt="{{ room.host.username }}'s profile image">
+                <h4>Host <span>@{{ room.host.username }}</span></h4>
+              </div>
+              <small>{{ room.created|timesince }} ago</small>
+            </div>
+            <div class="home-room-inner-second">
+              <div>
+                <h3>{{ room.name }}</h3>
+                <small>{{ room.participants.all.count }} PARTICIPANT{% if room.participants.all.count > 1 %}S{% endif %}</small>
+              </div>
+              <div class="home-room-participant-container">
+                {% for participant in room.participants.all|slice:":10" %}
+                  <img class="home-room-participant-img" src="{{ participant.profile_image.url }}" alt="{{ participant.username }}'s profile image">
+                {% endfor %}
+              </div>
+            </div>
+            <div class="home-room-inner-third">
+              <div>
+                <div>
+                  <a href="{% url 'home' %}?q={{ room.room_related_to.id|subtract_one }}">{{ room.room_related_to }}</a><span> > </span><a href="{% url 'home' %}?q={{ room.topic.name }}">{{ room.topic.name }}</a>
+                </div>
+                <a class="home-room-dive-in banned-dive-in" href="">Dive in</a>
+              </div>
+            </div>
+          </div>
+          {% else %}
           <div class="home-room">
             <div class="home-room-inner-first">
               <div>
@@ -120,6 +153,7 @@
               </div>
             </div>
           </div>
+          {% endif %}
           {% endfor %}
         </div>
       </div>
@@ -127,7 +161,7 @@
         <div class="user-information-container">
           <img class="user-profile-img" src="{{ request.user.profile_image.url }}" alt="{{ request.user.username }}'s profile image">
           <h3>@{{ request.user.username }}</h3>
-          <a class="user-information-room-create" href="{% url 'create-room' %}"><i class="fa-solid fa-plus"></i> Create room</a>
+          <a class="user-information-room-create" href="{% url 'create-room' %}"><i class="fa-solid fa-plus"></i> Create a room</a>
         </div>
         <div class="recent-activity-container">
           {% for recent_message in recent_messages %}
