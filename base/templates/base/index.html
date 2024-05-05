@@ -106,7 +106,7 @@
                 <small>{{ room.participants.all.count }} PARTICIPANT{% if room.participants.all.count > 1 %}S{% endif %}</small>
               </div>
               <div class="home-room-participant-container">
-                {% for participant in room.participants.all %}
+                {% for participant in room.participants.all|slice:":10" %}
                   <img class="home-room-participant-img" src="{{ participant.profile_image.url }}" alt="{{ participant.username }}'s profile image">
                 {% endfor %}
               </div>
@@ -124,6 +124,10 @@
         </div>
       </div>
       <div class="col-md-3">
+        <div class="user-information-container">
+          <img class="user-profile-img" src="{{ request.user.profile_image.url }}" alt="{{ request.user.username }}'s profile image">
+          <h3>@{{ request.user.username }}</h3>
+        </div>
         <div class="recent-activity-container">
           {% for recent_message in recent_messages %}
           <div class="recent-activity-inner-container">

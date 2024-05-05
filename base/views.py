@@ -15,7 +15,7 @@ def landing_page(request):
 def home(request):
     topics = Topic.objects.all()
     related_to = RelatedTo.objects.all()
-    recent_messages = Message.objects.all().order_by('-created')[0:10]
+    recent_messages = Message.objects.all().order_by('-created')[0:7]
     q = request.GET.get('q', '')
     rooms = Room.objects.filter(
         Q(topic__name__icontains=q) |
@@ -28,7 +28,7 @@ def home(request):
 def room(request, pk):
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all()
-    participants = room.participants.all().order_by('-created')
+    participants = room.participants.all()
     form = MessageForm(request.POST, request.FILES)
     if request.method == 'POST':
         if form.is_valid():
