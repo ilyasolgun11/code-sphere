@@ -400,7 +400,7 @@ body {
 }
 
 .home-room-inner-third div a {
-    color: rgb(218, 218, 218);
+    color: rgb(255, 255, 255);
     font-size: 0.9rem;
     text-decoration: none;
     font-weight: 500;
@@ -449,6 +449,79 @@ body {
 
 .home-room-inner-third .home-room-dive-in:hover i  {
     opacity: 1;
+}
+
+.recent-activity-container {
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 6px;
+    padding: 1.5px 0px;
+}
+
+.recent-activity-inner-container {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 6px;
+}
+
+.recent-activity-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #0000000f;
+    object-fit: cover;
+}
+
+.recent-activity-first-container h4 {
+    font-size: 0.9rem;
+    color: #3351DB;
+    font-weight: 500;
+    margin-top: 4.4px;
+    margin-left: 6px;
+}
+
+.recent-activity-first-container {
+    display: flex;
+    align-items: center;
+}
+
+.recent-activity-second-container .recent_activity_body {
+    display: flex;
+    flex-direction: column;
+}
+
+.recent-activity-second-container p {
+    margin: 5px 0px;
+    font-size: 0.85rem;
+}
+
+.recent-activity-second-container p span {
+    font-weight: 500;
+}
+
+.recent_activity_body a {
+    width: 100%;
+    padding: 10px;
+    background-color: #3351DB;
+    color: white;
+    border-radius: 6px 6px 0px 0px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.recent_activity_body a:hover {
+    color: #788ce6;
+}
+
+.recent_activity_body p {
+    font-weight: 500;
+    margin: 0px;
+    border: 1px solid #00000023;
+    border-top: none;
+    border-radius: 0px 0px 6px 6px;
+    padding: 10px;
 }
 
 /* Room page style -------------------------------------------------------  */
@@ -667,7 +740,6 @@ body {
 }
 
 .room-participants-container {
-    height: 86.49vh;
     width: 100%;
     border: 1px solid #00000018;
     border-radius: 6px;

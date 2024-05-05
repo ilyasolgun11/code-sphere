@@ -15,13 +15,14 @@ def landing_page(request):
 def home(request):
     topics = Topic.objects.all()
     related_to = RelatedTo.objects.all()
+    recent_messages = Message.objects.all()[0:10]
     q = request.GET.get('q', '')
     rooms = Room.objects.filter(
         Q(topic__name__icontains=q) |
         Q(room_related_to__related_to__icontains=q) |
         Q(name__icontains=q)
     )
-    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to}
+    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to, 'recent_messages': recent_messages}
     return render(request, 'base/index.html', context)
 
 def room(request, pk):

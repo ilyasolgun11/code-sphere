@@ -17,11 +17,11 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                Languages
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                Language rooms
               </button>
             </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
               <div class="accordion-body">
                 <a class="topic-item" href="{% url 'home' %}?q=0">All Languages <i class="fa-solid fa-arrow-right"></i></a>
               {% for topic in topics %}
@@ -35,7 +35,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                Frameworks
+                Framework rooms
               </button>
             </h2>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
@@ -52,7 +52,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Libraries
+                Library rooms
               </button>
             </h2>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
@@ -69,7 +69,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                Others
+                Other rooms
               </button>
             </h2>
             <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
@@ -123,7 +123,29 @@
           {% endfor %}
         </div>
       </div>
-      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <div class="recent-activity-container">
+          {% for recent_message in recent_messages %}
+          <div class="recent-activity-inner-container">
+          <div class="recent-activity-first-container">
+            <img class="recent-activity-img" src="{{ recent_message.user.profile_image.url }}" alt="{{ recent_message.user.username }}'s profile image">
+            <h4>@{{ recent_message.user.username }}</h4>
+          </div>
+          <div class="recent-activity-second-container">
+            <p>Posted <span>{{ recent_message.created|timesince }}</span> ago</p>
+            <div class="recent_activity_body">
+              <a href="{% url 'room' recent_message.room.id %}">{{ recent_message.room.name }}</a>
+              {% if recent_message.body|length > 50 %}
+              <p>{{ recent_message.body|slice:":50" }}...</p>
+              {% else %}
+              <p>{{ recent_message.body}}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 </main>
