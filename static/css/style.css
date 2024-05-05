@@ -879,7 +879,27 @@ body {
 
 .room-participant div {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+}
+
+.room-participant div div {
+    display: flex;
+    align-items: center;
+}
+
+.room-participant button {
+    background-color: white;
+    color: #190482;
+    padding: 3px 13px;
+    border: 1px solid #00000023;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: background-color 0.2s ease;
+}
+
+.room-participant button:hover {
+    background-color: rgb(255, 200, 200);
 }
 
 .room-participant h4 {

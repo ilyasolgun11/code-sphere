@@ -31,6 +31,13 @@ def room(request, pk):
     participants = room.participants.all()
     form = MessageForm(request.POST, request.FILES)
     if request.method == 'POST':
+        if 'ban' in request.POST:
+            if room.host == request.user:
+                participant_id = request.POST.get('participant_id')
+                participant = CustomUser.objects.get(id=participant_id)
+                room.banned_participants.add(participant)
+                room.participants.remove(participant)
+                return redirect('room', pk=pk)
         if form.is_valid():
             message = form.save(commit=False)
             message.user = request.user
@@ -43,6 +50,12 @@ def room(request, pk):
         return redirect('home')
     context = {'room': room, 'room_messages': room_messages, 'form': form, 'participants': participants}
     return render(request, 'base/room.html', context)
+
+def participant_ban(request, pk):
+    
+    room = Room.objects.get(id=pk)
+    
+    return render(request, 'base/ban_participant.html')
 
 def create_room(request):
     if request.method == 'POST':

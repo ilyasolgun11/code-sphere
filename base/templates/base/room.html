@@ -68,11 +68,22 @@
             {% for participant in participants %}
             <div class="room-participant">
                 <div>
+                <div>
                     <img class="room-participant-img" src="{{ participant.profile_image.url }}" alt="{{participant.username}}'s profile image">
                     <h4>@{{ participant.username }}</h4>
                 </div>
-            </div>
-            {% endfor %}
+                <div>
+                    {% if request.user == room.host %}
+                    <form action="{% url 'room' room.id %}" method="POST">
+                        {% csrf_token %}
+                    <input type="hidden" name="participant_id" value="{{ participant.id }}">
+                <button type="submit" name="ban">Ban</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endfor %}
         </div>
     </div>
 </div>
