@@ -20,6 +20,6 @@ class MessageForm(forms.ModelForm):
         model = Message
         fields = ['body', 'image']
         widgets = {
-            'body': forms.Textarea(attrs={'placeholder': 'Write your message here...', 'class': 'message-body'}),
+            'body': forms.TextInput(attrs={'placeholder': 'Write your message here...', 'class': 'message-body'}),
             'image': forms.FileInput(attrs={'placeholder': 'Choose an image...', 'class': 'message-file'}),
         }

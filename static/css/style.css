@@ -256,8 +256,8 @@ body {
     position: relative;
     width: 100%;
     height: 40px;
-    color: black;
-    font-size: 1.1rem;
+    color: rgb(32, 32, 32);
+    font-size: 1rem;
     text-decoration: none;
     font-weight: 500;
 }
@@ -265,12 +265,9 @@ body {
 .home-all-catagories i {
     font-size: 1.2rem;
     position: absolute;
-    right: 28px;
-    top: 0px;
-    color: #fff;
-    padding: 10px 11px;
-    background-color: #3351DB;
-    border-radius: 50%;
+    right: 34px;
+    top: 10px;
+    color: #3351DB;
     transform: rotate(-45deg);
 }
 
@@ -630,7 +627,7 @@ body {
 }
 
 .message-body {
-    padding: 12px 95px 17px 12px;
+    padding: 12px 110px 17px 12px;
     width: 100%;
     resize: none;
     height: 57px;
