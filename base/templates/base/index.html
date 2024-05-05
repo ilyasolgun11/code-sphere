@@ -86,7 +86,7 @@
         </div>
       </div>
       <div class="col-md-6 home-rooms-container">
-        <form action="{% url 'home' %}" method="GET">
+        <form id="room-search-form" action="{% url 'home' %}" method="GET">
           {% csrf_token %}
           <input class="search-input" type="text" name="q" placeholder="Search rooms..." />
         </form>
@@ -107,7 +107,7 @@
             <div class="home-room-inner-second">
               <div>
                 <h3>{{ room.name }}</h3>
-                <small>{{ room.participants.all.count }} PARTICIPANT{% if room.participants.all.count > 1 %}S{% endif %}</small>
+                <small>{{ room.participants.all.count }} PARTICIPANT{% if room.participants.all.count > 1 or room.participants.all.count == 1 %}S{% endif %}</small>
               </div>
               <div class="home-room-participant-container">
                 {% for participant in room.participants.all|slice:":10" %}
@@ -125,7 +125,7 @@
             </div>
           </div>
           {% else %}
-          <div class="home-room">
+          <div class="home-room {% if request.user == room.host %}room-highlight{% endif %}">
             <div class="home-room-inner-first">
               <div>
                 <img class="home-room-profile-img" src="{{ room.host.profile_image.url }}" alt="{{ room.host.username }}'s profile image">
@@ -136,7 +136,7 @@
             <div class="home-room-inner-second">
               <div>
                 <h3>{{ room.name }}</h3>
-                <small>{{ room.participants.all.count }} PARTICIPANT{% if room.participants.all.count > 1 %}S{% endif %}</small>
+                <small>{{ room.participants.all.count }} PARTICIPANT{% if room.participants.all.count > 1 or room.participants.all.count == 0 %}S{% endif %}</small>
               </div>
               <div class="home-room-participant-container">
                 {% for participant in room.participants.all|slice:":10" %}
@@ -164,6 +164,7 @@
           <a class="user-information-room-create" href="{% url 'create-room' %}"><i class="fa-solid fa-plus"></i> Create a room</a>
         </div>
         <div class="recent-activity-container">
+          <h4>Recent activity</h4>
           {% for recent_message in recent_messages %}
           <div class="recent-activity-inner-container">
           <div class="recent-activity-first-container">

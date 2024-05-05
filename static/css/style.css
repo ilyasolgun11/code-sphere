@@ -1,5 +1,5 @@
 /* Google fonts  */
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Navbar styles -------------------------------------------- */
 .navbar {
@@ -29,6 +29,10 @@
 body {
     box-sizing: border-box;
     font-family: "Noto Sans", sans-serif;
+}
+
+h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
+    font-family: "Raleway", sans-serif;
 }
 
 .landing-page-header {
@@ -262,6 +266,10 @@ body {
     border-radius: 9px;
 }
 
+.accordion-button {
+    height: 54px;
+}
+
 .home-all-catagories {
     margin: 10px 20px 5px 20px;
     padding-top: 10px;
@@ -305,10 +313,6 @@ body {
     transform: rotate(-45deg);
 }
 
-.home-rooms-container {
-    padding: 10px;
-}
-
 .search-input {
     width: 100%;
     padding: 8px 13px;
@@ -323,6 +327,11 @@ body {
     padding: 0px;
     border-radius: 6px;
     border: 1px solid #00000023;
+}
+
+.room-highlight {
+    border-radius: 10.2px;
+    border: 2px solid #3351DB;
 }
 
 .home-room-banned-banner {

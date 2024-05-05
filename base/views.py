@@ -113,7 +113,7 @@ def login_page(request):
         # Login the user or throw error
         if user is not None:
             login(request, user)
-            redirect('home')
+            return redirect('home')
         else:
             messages.error(request, 'Incorrect password')
             return render(request, 'base/login.html')
