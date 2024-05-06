@@ -100,7 +100,10 @@
                     name="participant_id"
                     value="{{ participant.id }}"
                   />
-                  <button type="submit" name="ban">Ban</button>
+                  <div class="participant-ban-container">
+                    <button class="participant-ban-btn" type="submit" name="ban">Ban</button>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
                 </form>
                 {% endif %}
               </div>

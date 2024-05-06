@@ -846,6 +846,11 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     border-radius: 50%;
 }
 
+.message-container .room-message-image:hover {
+    cursor: pointer;
+}
+
+
 .message-container p {
     margin: 0px;
     margin-top: 2px; 
@@ -917,6 +922,7 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 
 .room-participants-container {
     width: 100%;
+    max-height: 87.6vh;
     border: 1px solid #00000018;
     border-radius: 6px;
     background-color: white;
@@ -949,14 +955,21 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     align-items: center;
 }
 
-.room-participant button {
+.participant-ban-container .fa-ellipsis-vertical {
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 10px;
+}
+
+.participant-ban-btn {
+    display: none;
     background-color: white;
-    color: #190482;
-    padding: 3px 13px;
-    border: 1px solid #00000023;
-    font-weight: 500;
+    color: #3351DB;
+    padding: 4px 15px;
     border-radius: 50px;
-    transition: background-color 0.2s ease;
+    border: none;
 }
 
 .room-participant button:hover {
@@ -970,6 +983,3 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     font-weight: 500;
     color: white;
 }
-
-
-

@@ -1,3 +1,7 @@
+const optionsBtn = document.querySelector('.fa-ellipsis-vertical')
+const banBtn = document.querySelector('.participant-ban-btn')
+
+
 // Prevent accordion from closing on page refresh, doing this by assigning
 // each accordion with a key and saving that using local storage
 document.addEventListener('DOMContentLoaded', function () {
@@ -40,3 +44,11 @@ function previewImage(event) {
     }
     reader.readAsDataURL(event.target.files[0]);
   }
+
+document.querySelector('.fa-ellipsis-vertical').addEventListener("click", () => {
+    if (banBtn.style.display === "block") {
+        banBtn.style.display = "none"
+    } else {
+        banBtn.style.display = "block"
+    }
+})
