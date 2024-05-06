@@ -643,6 +643,7 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 }
 
 .recent-activity-first-container h4 {
+    font-family: "Noto Sans", sans-serif;
     font-size: 0.9rem;
     color: #3351DB;
     font-weight: 500;
@@ -696,6 +697,7 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 
 /* Room page style -------------------------------------------------------  */
 .room-container {
+    min-height: 100vh;
     padding-top: 90px;
     background-color: rgb(241, 241, 241);
 }
@@ -784,6 +786,16 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     position: relative;
     display: flex;
     align-items: center;
+}
+
+.message-form-container .preview-image {
+    height: 300px;
+    object-fit: contain;
+    position: absolute;
+    bottom: 86px;
+    left: 6px;
+    border: 3px solid #3351DB;
+    border-radius: 6px;
 }
 
 .room-messages-container {

@@ -64,16 +64,13 @@
         </div>
         <div class="message-form-container">
           <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %} {{ form.body }}
+            {% csrf_token %}
+            {{ form.body }}
+            <input id="custom-file-upload" type="file" style="display: none" name="image" onchange="previewImage(event)">
             <label for="custom-file-upload" class="custom-file-upload">
               <i class="fa-solid fa-arrow-up-from-bracket"></i>
             </label>
-            <input
-              id="custom-file-upload"
-              type="file"
-              style="display: none"
-              name="image"
-            />
+            <img id="image-preview" class="preview-image" src="#" alt="Image Preview" style="display: none">
             <button class="send-message-btn" type="submit">
               <i class="fa-solid fa-paper-plane"></i>
             </button>

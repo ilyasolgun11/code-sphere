@@ -30,3 +30,13 @@ window.onload = function() {
     scrollToBottom();
 };
 
+// Display image before user uploads
+function previewImage(event) {
+    let reader = new FileReader();
+    reader.onload = function() {
+      let preview = document.getElementById('image-preview');
+      preview.src = reader.result;
+      preview.style.display = 'block';
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
