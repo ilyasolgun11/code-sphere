@@ -155,50 +155,49 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 }
 
 /* Login page styles -------------------------------------------- */ 
-.login-container {
-    background-color: #3351DB;
+.login-container, .create-room-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-inner-container {
+.login-inner-container, .create-room-inner-container {
     width: 1280px;
     margin: 0px auto;
 }
 
-.login-page-img {
+.login-page-img, .create-room-img {
     width: 100%;
     height: 500px;
     object-fit: contain;
 }
 
-.login-form-container {
+.login-form-container, .create-room-form-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.login-form-container form {
+.login-form-container form , .create-room-form-container form{
     width: 100%;
     padding: 30px 50px;
 }
 
-.login-form-container label {
+.login-form-container label, .create-room-form-container form {
     margin-top: 7px;
-    color: white;
+    color: rgb(14, 14, 14);
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.login-form-container input {
+.login-form-container input, .create-room-form-container input {
     width: 100%;
     display: flex;
     flex-direction: column;
-    border: 3px solid #190482;
+    border: 1px solid #190482;
     outline: none;
     padding: 10px 13px;
     border-radius: 6px;
@@ -206,7 +205,7 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     font-weight: 500;
 }
 
-.login-form-container button {
+.login-form-container button, .create-room-form-container button {
     width: 100%;
     padding: 10px 13px;
     border: none;
@@ -224,7 +223,7 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 
 .login-to-register-container p {
     margin: 0px;
-    color: white;
+    color: rgb(14, 14, 14);
     font-weight: 600;
     margin-right: 5px;
 }
@@ -233,6 +232,38 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     color: #190482;
     font-weight: 600;
 }
+
+/* Create room page styles ---------------------------------------- */
+.create-room-form-container p select {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #190482;
+    outline: none;
+    padding: 10px 13px;
+    border-radius: 6px;
+    color: rgb(14, 14, 14);
+    font-weight: 500;
+}
+
+.create-room-form-container p:nth-of-type(4) {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+
+.create-room-form-container p:nth-of-type(4) label {
+    width: 70px;
+}
+
+.create-room-form-container p:nth-of-type(4) input {
+    cursor: pointer;
+    width: 8px;
+    height: 10px;
+    margin: 0px;
+    margin-left: 4px;
+}
+
 
 /* Home page styles --------------------------------------- */
 .home-container {
@@ -311,6 +342,10 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     top: 14px;
     color: #ffffff;
     transform: rotate(-45deg);
+}
+
+.home-rooms-container {
+    padding: 10px;
 }
 
 .search-input {
@@ -582,6 +617,17 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     padding: 1.5px 0px;
 }
 
+.recent-activity-container .recent-activity-header {
+    padding: 10px;
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin: 0px;
+    background-color: #3351DB;
+    border-radius: 6px 6px 0px 0px;
+    color: white;
+    margin-top: -3px;
+}
+
 .recent-activity-inner-container {
     padding: 10px;
     margin: 5px;
@@ -651,7 +697,6 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 /* Room page style -------------------------------------------------------  */
 .room-container {
     padding-top: 90px;
-    height: 100vh;
     background-color: rgb(241, 241, 241);
 }
 
@@ -739,11 +784,6 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     position: relative;
     display: flex;
     align-items: center;
-}
-
-.room-inner-container {
-    width: 1280px;
-    margin: 0px auto;
 }
 
 .room-messages-container {
@@ -918,3 +958,6 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     font-weight: 500;
     color: white;
 }
+
+
+

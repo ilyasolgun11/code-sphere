@@ -86,7 +86,7 @@
         </div>
       </div>
       <div class="col-md-6 home-rooms-container">
-        <form id="room-search-form" action="{% url 'home' %}" method="GET">
+        <form action="{% url 'home' %}" method="GET">
           {% csrf_token %}
           <input class="search-input" type="text" name="q" placeholder="Search rooms..." />
         </form>
@@ -164,7 +164,7 @@
           <a class="user-information-room-create" href="{% url 'create-room' %}"><i class="fa-solid fa-plus"></i> Create a room</a>
         </div>
         <div class="recent-activity-container">
-          <h4>Recent activity</h4>
+          <h4 class="recent-activity-header">Recent activity</h4>
           {% for recent_message in recent_messages %}
           <div class="recent-activity-inner-container">
           <div class="recent-activity-first-container">

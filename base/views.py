@@ -13,6 +13,11 @@ def landing_page(request):
 
 @login_required(login_url='login')
 def home(request):
+    """
+    Retrieves topics, related items, and recent messages from the database.
+    Filters rooms based on the search query and renders the home page
+    with the retrieved data.
+    """
     topics = Topic.objects.all()
     related_to = RelatedTo.objects.all()
     recent_messages = Message.objects.all().order_by('-created')[0:7]
@@ -26,6 +31,12 @@ def home(request):
     return render(request, 'base/index.html', context)
 
 def room(request, pk):
+    """
+    Retrieves a specific room and its messages.
+    Message adding functionality.
+    Handles banning participants and posting messages.
+    Redirects banned users to the home page.
+    """
     room = Room.objects.get(id=pk)
     room_messages = room.message_set.all()
     participants = room.participants.all()
@@ -51,13 +62,11 @@ def room(request, pk):
     context = {'room': room, 'room_messages': room_messages, 'form': form, 'participants': participants}
     return render(request, 'base/room.html', context)
 
-def participant_ban(request, pk):
-    
-    room = Room.objects.get(id=pk)
-    
-    return render(request, 'base/ban_participant.html')
-
 def create_room(request):
+    """
+    Renders the room creation form.
+    Handles creating a new room.
+    """
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
@@ -71,6 +80,10 @@ def create_room(request):
     return render(request, 'base/create_room.html', {'form': form})
 
 def register_page(request):
+    """
+    Renders the user registration form.
+    Handles registering a new user.
+    """
     # Initialise user creation form
     form = MyUserCreationForm()
 
@@ -94,6 +107,10 @@ def register_page(request):
     return render(request, 'base/register.html', context)
 
 def login_page(request):
+    """
+    Renders the login form.
+    Handles user login.
+    """
     # If the request from the view is post
     if request.method == 'POST':
         # Grab the email and password from the request
@@ -122,6 +139,9 @@ def login_page(request):
 
 
 def logout_page(request):
+    """
+    Logs out the current user and redirects to the landing page.
+    """
     # Logout the user
     logout(request)
     return redirect('landing_page')

@@ -20,6 +20,12 @@ class RoomForm(forms.ModelForm):
         model = Room
         fields = '__all__'
         exclude = ['host', 'participants', 'banned_participants']
+        widgets = {
+            'topic': forms.Select(attrs={'class': 'form-control'}),
+            'room_related_to': forms.Select(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Enter room name', 'class': 'form-control'}),
+            'is_private': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
 
 
 class MessageForm(forms.ModelForm):

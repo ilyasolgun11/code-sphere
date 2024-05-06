@@ -1,10 +1,30 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>Room creation</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create Room</button>
-</form>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main class="create-room-container">
+  <div class="create-room-inner-container row">
+    <div class="col-md-6">
+      <img
+        class="create-room-img"
+        src="{% static 'images/landing_page_right.png' %}"
+        alt=""
+      />
+    </div>
+    <div class="col-md-6 create-room-form-container">
+        <!-- Any errors will show up here  -->
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+          {{ message }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Room</button>
+        </form>
+    </div>
+  </div>
+</main>
 {% endblock content %}
