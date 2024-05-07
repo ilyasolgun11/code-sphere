@@ -84,6 +84,28 @@
             </div>
           </div>
         </div>
+        <div class="home-user-rooms-container">
+          {% for room in rooms %}
+            {% if request.user == room.host %}
+            <div class="home-user-room">
+              <div class="home-user-room-first">
+                <h4>{{ room.name }}</h4>
+                <small>{{ room.participants.count }} PARTICIPANT{% if room.participants.count != 1 %}s{% endif %}</small>
+              </div>
+              <div class="home-user-room-second">
+                <small>{{ room.topic.name }}</small>
+                <small>created {{ room.created|timesince }} ago</small>
+              </div>
+              <div class="home-user-room-third">
+                <form action="{% url 'delete-room' room.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" name="room-delete">Delete room</button>
+                </form>
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
       <div class="col-md-6 home-rooms-container">
         <form action="{% url 'home' %}" method="GET">
@@ -92,6 +114,7 @@
         </form>
         <div class="home-room-container">
           {% for room in rooms %}
+          {% if request.user != room.host %}
           {% if request.user in room.banned_participants.all %}
           <div class="home-room">
             <div class="home-room-banned-banner">
@@ -153,6 +176,7 @@
               </div>
             </div>
           </div>
+          {% endif %}
           {% endif %}
           {% endfor %}
         </div>

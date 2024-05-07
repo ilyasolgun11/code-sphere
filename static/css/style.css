@@ -344,6 +344,43 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     transform: rotate(-45deg);
 }
 
+.home-user-room {
+    background-color: white;
+    border: 1px solid #00000023;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.home-user-room-first {
+    border-left: 2px solid rgba(0, 0, 0, 0.205);
+    padding: 10px;
+}
+
+.home-user-room-first h4 {
+    color: #3351DB;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.home-user-room-first small {
+    color: rgb(81, 81, 81);
+    font-weight: 500;
+}
+
+.home-user-room-second {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-user-room-second small {
+    font-size: 0.75rem;
+    color: rgb(81, 81, 81);
+}
+
+
 .home-rooms-container {
     padding: 10px;
 }

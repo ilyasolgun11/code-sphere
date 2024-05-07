@@ -56,6 +56,9 @@ def room(request, pk):
             message.save()
             room.participants.add(request.user)
             return redirect('room', pk=room.id)
+        if 'delete-room' in request.POST:
+            room.delete()
+            return redirect('home')
         
     if request.user in room.banned_participants.all():
         return redirect('home')
@@ -78,6 +81,14 @@ def create_room(request):
     else:
         form = RoomForm()
     return render(request, 'base/create_room.html', {'form': form})
+
+def delete_room(request, pk):
+    room = Room.objects.get(id=pk)
+    if request.method == "POST":
+        if 'room-delete' in request.POST:
+            room.delete()
+            return redirect('home')
+    return render(request, 'base/delete_room.html')
 
 def register_page(request):
     """
