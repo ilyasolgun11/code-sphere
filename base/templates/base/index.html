@@ -86,7 +86,7 @@
         </div>
         <div class="home-user-rooms-container">
           <h3>My rooms</h3>
-          {% for room in rooms %}
+          {% for room in host_rooms %}
             {% if request.user == room.host %}
             <div class="home-user-room">
               <div class="home-user-room-first">
@@ -187,9 +187,6 @@
         <div class="user-information-container">
           <img class="user-profile-img" src="{{ request.user.profile_image.url }}" alt="{{ request.user.username }}'s profile image">
           <h3>@{{ request.user.username }}</h3>
-          <p>
-              
-          </p>
           <a class="user-information-room-create" href="{% url 'create-room' %}"><i class="fa-solid fa-plus"></i> Create a room</a>
         </div>
         <div class="recent-activity-container">

@@ -19,6 +19,7 @@ def home(request):
     Filters rooms based on the search query and renders the home page
     with the retrieved data.
     """
+    host_rooms = Room.objects.all()
     topics = Topic.objects.all()
     related_to = RelatedTo.objects.all()
     recent_messages = Message.objects.all().order_by('-created')[0:7]
@@ -28,7 +29,7 @@ def home(request):
         Q(room_related_to__related_to__icontains=q) |
         Q(name__icontains=q)
     ).order_by('-created')
-    context = {'topics': topics, 'rooms': rooms, 'related_to': related_to, 'recent_messages': recent_messages}
+    context = {'host_rooms': host_rooms, 'topics': topics, 'rooms': rooms, 'related_to': related_to, 'recent_messages': recent_messages}
     return render(request, 'base/index.html', context)
 
 def room(request, pk):

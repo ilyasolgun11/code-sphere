@@ -326,13 +326,15 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 .topic-item {
     position: relative;
     width: 100%;
-    background-color: #3351DB;
     padding: 12px;
     border-radius: 6px;
-    color: white;
+    color: #3351DB;
     font-weight: 600;
+    background-color: white;
     text-decoration: none;
     margin: 4px 0px;
+    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .topic-item i {
@@ -340,8 +342,18 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     position: absolute;
     right: 10px;
     top: 14px;
-    color: #ffffff;
+    color: #3351DB;
     transform: rotate(-45deg);
+    transition: color 0.2s ease;
+}
+
+.topic-item:hover {
+    background-color: #3351DB;
+    color: white;
+}
+
+.topic-item:hover i  {
+    color: white;
 }
 
 .home-user-room {
@@ -398,15 +410,66 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     color: rgb(81, 81, 81);
 }
 
+.home-user-room-third {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.home-user-room-third form {
+    width: 50%;
+}
+
 .home-user-room-third button {
     padding: 8px 0px;
-    margin-top: 8px;
     border-radius: 6px;
-    background-color: #3351DB;
-    color: white;
     border: none;
     width: 100%;
+    background-color: transparent;
+    color: #3351DB;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
+
+.home-user-room-third button:hover {
+    color: #190482;
+}
+
+.home-user-room-dive-in {
+    position: relative;
+    width: 50%;
+    text-align: center;
+    background-color: #3351DB;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 0px;
+    border-radius: 50px;
+    transition: padding 0.2s ease;
+}
+
+.home-user-room-dive-in i {
+    opacity: 0;
+    position: absolute;
+    right: 4.6px;
+    top: 4.6px;
+    transform: rotate(-45deg);
+    transition: opacity 0.2s ease;
+    background-color: white;
+    color: #3351DB;
+    padding: 7px 8px;
+    border-radius: 50%;
+}
+
+.home-user-room-dive-in:hover {
+    padding: 8px 10px 8px 0px;
+}
+
+.home-user-room-dive-in:hover i {
+    opacity: 1;
+}
+
 
 .home-rooms-container {
     padding: 10px;
