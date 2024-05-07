@@ -51,10 +51,11 @@ def room(request, pk):
                 room.participants.remove(participant)
                 return redirect('room', pk=pk)
         if form.is_valid():
-            image_file = request.FILES['image']
-            response = upload(image_file)
             message = form.save(commit=False)
-            message.image = response['url']
+            if 'image' in request.FILES:
+                image_file = request.FILES['image']
+                response = upload(image_file)
+                message.image = response['url']
             message.user = request.user
             message.room = room
             message.save()
