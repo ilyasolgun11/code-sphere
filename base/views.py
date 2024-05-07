@@ -1,3 +1,4 @@
+from cloudinary.uploader import upload
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import render, redirect
@@ -50,7 +51,10 @@ def room(request, pk):
                 room.participants.remove(participant)
                 return redirect('room', pk=pk)
         if form.is_valid():
+            image_file = request.FILES['image']
+            response = upload(image_file)
             message = form.save(commit=False)
+            message.image = response['url']
             message.user = request.user
             message.room = room
             message.save()

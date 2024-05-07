@@ -349,7 +349,11 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     border: 1px solid #00000023;
     border-radius: 6px;
     padding: 10px;
-    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.home-user-room:nth-of-type(1) {
+    border-radius: 0px 0px 6px 6px;
 }
 
 .home-user-room-first {
@@ -357,15 +361,29 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     padding: 10px;
 }
 
+.home-user-rooms-container h3 {
+    margin: 0px;
+    margin-top: 10px;
+    font-size: 1.3rem;
+    padding: 12px;
+    font-weight: 500;
+    background-color: #3351DB;
+    border: 1px solid #00000023;
+    border-radius: 6px 6px 0px 0px;
+    color: white;
+}
+
 .home-user-room-first h4 {
     color: #3351DB;
     font-weight: 600;
     margin-bottom: 0px;
+    font-size: 1.15rem
 }
 
 .home-user-room-first small {
     color: rgb(81, 81, 81);
     font-weight: 500;
+    font-size: 0.75rem;
 }
 
 .home-user-room-second {
@@ -380,6 +398,15 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     color: rgb(81, 81, 81);
 }
 
+.home-user-room-third button {
+    padding: 8px 0px;
+    margin-top: 8px;
+    border-radius: 6px;
+    background-color: #3351DB;
+    color: white;
+    border: none;
+    width: 100%;
+}
 
 .home-rooms-container {
     padding: 10px;

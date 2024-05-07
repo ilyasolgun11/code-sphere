@@ -85,12 +85,13 @@
           </div>
         </div>
         <div class="home-user-rooms-container">
+          <h3>My rooms</h3>
           {% for room in rooms %}
             {% if request.user == room.host %}
             <div class="home-user-room">
               <div class="home-user-room-first">
                 <h4>{{ room.name }}</h4>
-                <small>{{ room.participants.count }} PARTICIPANT{% if room.participants.count != 1 %}s{% endif %}</small>
+                <small>{{ room.participants.count }} PARTICIPANT{% if room.participants.count != 1 %}S{% endif %}</small>
               </div>
               <div class="home-user-room-second">
                 <small>{{ room.topic.name }}</small>
@@ -101,6 +102,7 @@
                   {% csrf_token %}
                   <button type="submit" name="room-delete">Delete room</button>
                 </form>
+                <a class="home-user-room-dive-in" href="{% url 'room' room.id %}">Dive in <i class="fa-solid fa-arrow-right"></i></a>
               </div>
             </div>
             {% endif %}
