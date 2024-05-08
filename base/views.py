@@ -110,6 +110,16 @@ def delete_room(request, pk):
             return redirect('home')
     return render(request, 'base/delete_room.html')
 
+def delete_message(request, pk):
+    message = Message.objects.get(id=pk)
+    if request.user != message.user:
+        return redirect('home')
+    if request.method == 'POST':
+        if 'message-delete' in request.POST:
+            message.delete()
+            return redirect('room', pk=message.room.id)
+    return render(request, 'base/delete_message.html')
+
 def register_page(request):
     """
     Renders the user registration form.

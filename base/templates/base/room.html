@@ -28,6 +28,12 @@
                   alt="{{ message.user.username }}'s profile image"
                 />
                 <h4>{{ message.user.username }}</h4>
+                {% if request.user == message.user %}
+                <form action="{% url 'delete-message' message.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" name="message-delete">Delete</button>
+                </form>
+                {% endif %}
                 {% if message.user == room.host %}
                 <h4 class="message-room-host">Host</h4>
                 {% endif %}
@@ -36,7 +42,8 @@
             </div>
             <small>{{ message.created|timesince }} ago</small>
           </div>
-          {% endif %} {% if message.image %}
+          {% endif %} 
+          {% if message.image %}
           <div class="message-container">
             <div class="message-container-first">
               <div class="message-container-second">
@@ -46,6 +53,12 @@
                   alt="{{ message.user.username }}'s profile image"
                 />
                 <h4>{{ message.user.username }}</h4>
+                {% if request.user == message.user %}
+                <form action="{% url 'delete-message' message.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" name="message-delete">Delete</button>
+                </form>
+                {% endif %}
                 {% if message.user == room.host %}
                 <h4 class="message-room-host">Host</h4>
                 {% endif %}
