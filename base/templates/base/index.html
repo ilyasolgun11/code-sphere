@@ -90,19 +90,20 @@
             {% if request.user == room.host %}
             <div class="home-user-room">
               <div class="home-user-room-first">
-                <h4>{{ room.name }}</h4>
-                <small>{{ room.participants.count }} PARTICIPANT{% if room.participants.count != 1 %}S{% endif %}</small>
-              </div>
-              <div class="home-user-room-second">
                 <small>{{ room.topic.name }}</small>
                 <small>created {{ room.created|timesince }} ago</small>
               </div>
+              <div class="home-user-room-second">
+                <h4>{{ room.name }}</h4>
+                <small>{{ room.participants.count }} PARTICIPANT{% if room.participants.count != 1 %}S{% endif %}</small>
+              </div>
               <div class="home-user-room-third">
+                <a class="home-user-room-update" href="{% url 'update-room' room.id %}">Edit</a>
                 <form action="{% url 'delete-room' room.id %}" method="POST">
                   {% csrf_token %}
-                  <button type="submit" name="room-delete">Delete room</button>
+                  <button type="submit" name="room-delete">Delete</button>
                 </form>
-                <a class="home-user-room-dive-in" href="{% url 'room' room.id %}">Dive in <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="home-user-room-dive-in" href="{% url 'room' room.id %}">Dive in</a>
               </div>
             </div>
             {% endif %}

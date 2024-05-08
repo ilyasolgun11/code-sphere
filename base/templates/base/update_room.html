@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<main class="create-room-container">
-  <div class="create-room-inner-container row">
+<main class="update-room-container">
+  <div class="update-room-inner-container row">
     <div class="col-md-6">
       <img
-        class="create-room-img"
+        class="update-room-img"
         src="{% static 'images/landing_page_right.png' %}"
         alt=""
       />
     </div>
-    <div class="col-md-6 create-room-form-container">
+    <div class="col-md-6 update-room-form-container">
         <!-- Any errors will show up here  -->
       {% if messages %}
       <ul class="messages">
@@ -22,7 +22,7 @@
       <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create Room</button>
+        <button type="submit">Update Room</button>
         </form>
     </div>
   </div>
