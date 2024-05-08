@@ -203,6 +203,8 @@
               <a href="{% url 'room' recent_message.room.id %}">{{ recent_message.room.name }}</a>
               {% if recent_message.body|length > 50 %}
               <p>{{ recent_message.body|slice:":50" }}...</p>
+              {% elif recent_message.body|length == 0 %}
+              <p>Image file</p>
               {% else %}
               <p>{{ recent_message.body}}</p>
               {% endif %}

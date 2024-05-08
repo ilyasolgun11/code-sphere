@@ -139,19 +139,26 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 }
 
 .landing-page-img-left {
-    left: 10px;
-    bottom: 180px;
+    left: 110px;
+    bottom: 105px;
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 420px;
+    height: 420px;
+    transform: scaleX(-1);
+    object-fit: contain;
 }
 
 .landing-page-img-right {
-    right: 10px;
-    bottom: 215px;
+    right: 110px;
+    bottom: 105px;
     position: absolute;
-    width: 340px;
-    height: 340px;
+    width: 450px;
+    height: 450px;
+    object-fit: contain;
+}
+
+#explore-catagories-section {
+    margin-top: 120px;
 }
 
 /* Login page styles -------------------------------------------- */ 
@@ -422,12 +429,13 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 }
 
 .home-user-room-update {
+    border-right: 1px solid white;
     text-align: center;
     color: white;
     text-decoration: none;
     width: 33.3%;
     opacity: 1;
-    transition: opacity 0.2s ease-out;
+    transition: color 0.2s ease-out;
 }
 
 .home-user-room-update:hover {
@@ -439,9 +447,8 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 }
 
 .home-user-room-third button {
-    padding: 8px 0px;
-    border-radius: 6px;
     border: none;
+    border-right: 1px solid white;
     width: 100%;
     background-color: transparent;
     color: #fff;

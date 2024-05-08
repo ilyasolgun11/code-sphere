@@ -90,6 +90,8 @@ def create_room(request):
 
 def update_room(request, pk):
     room = Room.objects.get(id=pk)
+    if request.user != room.host:
+        return redirect('home')
     if request.method == 'POST':
         form = RoomForm(request.POST, instance=room)
         if form.is_valid():
