@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% load custom_filters %}
 
 {% block content %}
@@ -116,6 +116,16 @@
           <input class="search-input" type="text" name="q" placeholder="Search rooms..." />
         </form>
         <div class="home-room-container">
+          {% if not rooms %}
+          <div class="home-no-room-container">
+            <div>
+            <h4>Hmmm,</h4>
+            <h4>no rooms here.</h4>
+            <p>Search other catagories or <a href="{% url 'create-room' %}">create a room</a></p>
+          </div>
+            <img src="{% static 'images/man-thinking.png' %}" alt="man thinking image">
+          </div>
+          {% else %}
           {% for room in rooms %}
           {% if request.user != room.host %}
           {% if request.user in room.banned_participants.all %}
@@ -182,6 +192,7 @@
           {% endif %}
           {% endif %}
           {% endfor %}
+          {% endif %}
         </div>
       </div>
       <div class="col-md-3">

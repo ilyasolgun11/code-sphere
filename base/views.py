@@ -52,6 +52,7 @@ def room(request, pk):
                 room.participants.remove(participant)
                 return redirect('room', pk=pk)
         if form.is_valid():
+            room.participants.add(request.user)
             message = form.save(commit=False)
             if 'image' in request.FILES:
                 image_file = request.FILES['image']
@@ -60,7 +61,6 @@ def room(request, pk):
             message.user = request.user
             message.room = room
             message.save()
-            room.participants.add(request.user)
             return redirect('room', pk=room.id)
         if 'delete-room' in request.POST:
             room.delete()

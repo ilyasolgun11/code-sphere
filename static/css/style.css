@@ -276,6 +276,7 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 .home-container {
     min-height: 100vh;
     padding-top: 90px;
+    padding-bottom: 50px;
     background-color: rgb(241, 241, 241);
 }
 
@@ -495,6 +496,56 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     padding: 0px;
     border-radius: 6px;
     border: 1px solid #00000023;
+}
+
+.home-no-room-container {
+    padding: 20px;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #00000023;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-no-room-container div {
+    width: 50%;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding-left: 70px;
+}
+
+.home-no-room-container div h4:nth-of-type(1) {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.home-no-room-container div h4:nth-of-type(2) {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.home-no-room-container div p {
+    line-height: 16px;
+}
+
+.home-no-room-container div p a {
+    color: #3351DB;
+}
+
+.home-no-room-container div p a:hover {
+    color: #190482;
+    text-decoration: none;
+}
+
+.home-no-room-container img {
+    width: 50%;
+    height: 200px;
+    object-fit: contain;
 }
 
 .room-highlight {
