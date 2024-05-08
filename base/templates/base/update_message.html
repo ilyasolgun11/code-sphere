@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main class="create-room-container">
+  <div class="create-room-inner-container row">
+    <div class="col-md-6">
+      <img
+        class="create-room-img"
+        src="{% static 'images/landing_page_right.png' %}"
+        alt=""
+      />
+    </div>
+    <div class="col-md-6 create-room-form-container">
+        <!-- Any errors will show up here  -->
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+          {{ message }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_body">Body:</label>
+        {{ form.body }}
+        <label for="id_image">Image:</label>
+        {{ form.image }}
+        <button type="submit">Update message</button>
+        </form>
+    </div>
+  </div>
+</main>
+{% endblock content %}

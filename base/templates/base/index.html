@@ -85,7 +85,6 @@
           </div>
         </div>
         <div class="home-user-rooms-container">
-          <h3>My rooms</h3>
           {% for room in host_rooms %}
             {% if request.user == room.host %}
             <div class="home-user-room">

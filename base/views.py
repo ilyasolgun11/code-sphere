@@ -120,6 +120,20 @@ def delete_message(request, pk):
             return redirect('room', pk=message.room.id)
     return render(request, 'base/delete_message.html')
 
+def update_message(request, pk):
+    message = Message.objects.get(id=pk)
+    if request.user != message.user:
+        return redirect('home')
+    if request.method == 'POST':
+        form = MessageForm(request.POST, request.FILES, instance=message)
+        if form.is_valid():
+            form.save()
+            return redirect('room', pk=message.room.id)
+    else:
+        form = MessageForm(instance=message)
+    context = { 'form': form }
+    return render(request, 'base/update_message.html', context)
+
 def register_page(request):
     """
     Renders the user registration form.

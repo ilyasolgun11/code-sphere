@@ -22,16 +22,22 @@
           <div class="message-container">
             <div class="message-container-first">
               <div class="message-container-second">
+                <div>
                 <img
                   class="room-message-image"
                   src="{{ message.user.profile_image.url }}"
                   alt="{{ message.user.username }}'s profile image"
                 />
                 <h4>{{ message.user.username }}</h4>
+              </div>
                 {% if request.user == message.user %}
                 <form action="{% url 'delete-message' message.id %}" method="POST">
                   {% csrf_token %}
                   <button type="submit" name="message-delete">Delete</button>
+                </form>
+                <form action="{% url 'update-message' message.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" name="message-update">Edit</button>
                 </form>
                 {% endif %}
                 {% if message.user == room.host %}
@@ -57,6 +63,10 @@
                 <form action="{% url 'delete-message' message.id %}" method="POST">
                   {% csrf_token %}
                   <button type="submit" name="message-delete">Delete</button>
+                </form>
+                <form action="{% url 'update-message' message.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" name="message-update">Edit</button>
                 </form>
                 {% endif %}
                 {% if message.user == room.host %}

@@ -1,6 +1,22 @@
 /* Google fonts  */
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Global styles -------------------------------------------- */
+.errorlist {
+    width: 100%;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+.errorlist li {
+    padding: 10px 13px;
+    background-color: rgba(255, 0, 0, 0.612);
+    color: white;
+    border-radius: 6px;
+}
+
 /* Navbar styles -------------------------------------------- */
 .navbar {
     background-color: white;
@@ -368,11 +384,7 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     border: 1px solid #00000023;
     border-radius: 6px;
     padding: 10px;
-    margin-bottom: 10px;
-}
-
-.home-user-room:nth-of-type(1) {
-    border-radius: 0px 0px 6px 6px;
+    margin-top: 10px;
 }
 
 .home-user-rooms-container h3 {
@@ -966,7 +978,6 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
 }
 
 .room-messages-container form {
-    width: 100%;
     position: relative;
     display: flex;
     align-items: center;
@@ -1006,6 +1017,11 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     display: flex;
     align-items: center;
     margin-bottom: 6px;
+    min-width: 200px;
+}
+
+.message-container-second div {
+    display: flex;
 }
 
 .message-container-second h4 {
@@ -1013,6 +1029,27 @@ h2, h3, h4, h5, h6, p, .navbar-brand, .nav-link {
     margin-left: 7px;
     margin-top: 7px;
     font-weight: 600;
+    margin-right: 9px;
+}
+
+.message-container form button {
+    padding: 5px 14px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: #3351DB;
+    color: white;
+    border: none;
+    margin-top: 1px;
+    margin-right: 2px;
+    transition: color 0.2s ease;
+}
+
+.message-container form:nth-of-type(2) button {
+    border-radius: 0px 50px 50px 0px;
+    padding: 5px 19px;
+}
+
+.message-container form button:hover {
+    color: #b6b6b6;
 }
 
 .message-container .message-room-host {
